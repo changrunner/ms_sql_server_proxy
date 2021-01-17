@@ -1,0 +1,27 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[[source]]
+name = "test"
+url = "https://test.pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+setuptools = ">=49.6.0"
+wheel = ">=0.35.1"
+twine = ">=3.2.0"
+python-decouple = ">=3.3"
+pytest = ">=6.1.2"
+testfixtures = ">=6.15.0"
+
+[packages]
+flask-restful = ">=0.3.8"
+zeppos-microsoft-sql-server = ">=0.0.6"
+python-jwt = ">=3.3.0"
+zeppos-application = ">=0.0.3"
+flasgger = ">=0.9.5"
+
+[requires]
+python_version = "3.8"
