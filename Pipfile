@@ -18,14 +18,14 @@ pyinstaller = ">=4.1"
 [packages]
 pywin32 = ">=300"
 psutil = ">==5.7.3"
-zeppos-application = ">=0.0.5"
-zeppos-core = ">=1.0.6"
 flask-restful = "*"
 flasgger = "*"
 python-jwt = "*"
-zeppos-microsoft-sql-server = "*"
 waitress = "*"
 paste = "*"
+zeppos-application = ">=0.0.5"
+zeppos-core = ">=1.0.6"
+zeppos-microsoft-sql-server = ">=0.0.17"
 
 [requires]
 python_version = "3.8"
