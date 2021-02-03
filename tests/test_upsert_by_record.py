@@ -1,6 +1,6 @@
 import unittest
 from app.run_server import App
-from api.upsert import UpsertByRecord
+from api.upsert_by_record import UpsertByRecord
 from tests.api_response import ApiReponse
 from api.jwt import JWT
 import pandas as pd
@@ -16,8 +16,8 @@ class TestTheProjectMethods(unittest.TestCase):
         ms_sql.drop_table("dbo", "api_test_table")
         response = ApiReponse(
             self.app.post('/upsert/by_record',
-                          headers={
-                              'Authorization': 'Bearer ' + JWT.create_access_token(user_name="123", password="456")},
+                          # headers={
+                          #     'Authorization': 'Bearer ' + JWT.create_access_token(user_name="123", password="456")},
                           data={
                               "connection_string": "DRIVER={ODBC Driver 13 for SQL Server}; SERVER=localhost\sqlexpress; DATABASE=master; Trusted_Connection=yes;",
                               "dataframe": pd.DataFrame({'column_1': [3600]}, columns=['column_1']).to_json(orient='table'),
@@ -39,8 +39,8 @@ class TestTheProjectMethods(unittest.TestCase):
         ms_sql.create_table("dbo", "api_test_table", pd.DataFrame({'column_1': [3600]}, columns=['column_1']))
         response = ApiReponse(
             self.app.post('/upsert/by_record',
-                          headers={
-                              'Authorization': 'Bearer ' + JWT.create_access_token(user_name="123", password="456")},
+                          # headers={
+                          #     'Authorization': 'Bearer ' + JWT.create_access_token(user_name="123", password="456")},
                           data={
                               "connection_string": "DRIVER={ODBC Driver 13 for SQL Server}; SERVER=localhost\sqlexpress; DATABASE=master; Trusted_Connection=yes;",
                               "dataframe": pd.DataFrame({'column_1': [3600]}, columns=['column_1']).to_json(orient='table'),
