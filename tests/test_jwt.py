@@ -1,6 +1,6 @@
 import unittest
 from api.jwt import JWT
-from api.app import App
+from app.run_server import App
 
 class TestTheProjectMethods(unittest.TestCase):
     def test_create_access_token_method(self):

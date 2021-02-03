@@ -9,8 +9,16 @@ url = "https://test.pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest = ">=6.1.2"
+testfixtures = ">=6.15.0"
+wheel = "*"
+setuptools = "*"
+pyinstaller = ">=4.1"
 
 [packages]
+pywin32 = ">=300"
+psutil = ">==5.7.3"
+zeppos-application = ">=0.0.5"
 zeppos-core = ">=1.0.6"
 flask-restful = "*"
 flasgger = "*"

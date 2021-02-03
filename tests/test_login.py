@@ -1,5 +1,5 @@
 import unittest
-from api.app import App
+from app.run_server import App
 from api.login import Login
 from tests.api_response import ApiReponse
 import json

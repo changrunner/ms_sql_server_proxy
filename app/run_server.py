@@ -12,8 +12,24 @@ from flask_restful import Api
 from api.heart_beat import HeartBeat
 from api.execute import Execute
 from api.read import Read
+from run_app_base import RunAppBase
 # from api.upsert import Upsert
 from flasgger import Swagger
+
+
+class RunServer(RunAppBase):
+    def __init__(self):
+        super().__init__()
+
+    def run_server(self):
+        if super().start_app():
+            LISTEN = f"127.0.0.1:{5800}"
+            serve(TransLogger(application=App.create_app_instance([HeartBeat, Read, Execute]),
+                              logger=AppLogger.logger,
+                              setup_console_handler=True)
+                  , listen=LISTEN)
+            # , Read, Upsert, Execute
+
 
 class App:
     def create_app(self, class_object_list):
@@ -40,10 +56,5 @@ if __name__ == '__main__':
         watchtower_stream_name="app"
     )
     AppLogger.set_debug_level()
+    RunServer().run_server()
 
-    LISTEN = f"127.0.0.1:{5800}"
-    serve(TransLogger(application=App.create_app_instance([HeartBeat, Read, Execute]),
-                      logger=AppLogger.logger,
-                      setup_console_handler=True)
-          , listen=LISTEN)
-    # , Read, Upsert, Execute

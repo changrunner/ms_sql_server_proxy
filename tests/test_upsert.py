@@ -1,5 +1,5 @@
 import unittest
-from api.app import App
+from app.run_server import App
 from api.upsert import UpsertByRecord
 from tests.api_response import ApiReponse
 from api.jwt import JWT
