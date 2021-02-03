@@ -12,7 +12,7 @@ from flask_restful import Api
 from api.heart_beat import HeartBeat
 from api.execute import Execute
 from api.read import Read
-from run_app_base import RunAppBase
+from app.run_app_base import RunAppBase
 # from api.upsert import Upsert
 from flasgger import Swagger
 

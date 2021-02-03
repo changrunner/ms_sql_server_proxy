@@ -1,3 +1,8 @@
+# Make sure we have the correct relative path
+from sys import path, exc_info, stdout
+
+path.insert(0, '..')  # chang to the root directory of the project
+#########################################################################
 import sys
 import traceback
 import os
