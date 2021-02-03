@@ -4,3 +4,4 @@
 *.egg-info
 /Pipfile.lock
 __pycache__
+/windows_service.spec
