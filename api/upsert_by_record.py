@@ -13,7 +13,7 @@ class UpsertByRecord(Resource):
     parser.add_argument('table_name')
     parser.add_argument('batch_size')
 
-    @login_required
+    # @login_required
     def post(self):
         try:
             args = UpsertByRecord.parser.parse_args()
@@ -36,4 +36,4 @@ class UpsertByRecord(Resource):
 
     @staticmethod
     def add_routes(api):
-        api.add_resource(UpsertByRecord, '/upsert/by_record')
+        api.add_resource(UpsertByRecord, '/upsert/by_record/')

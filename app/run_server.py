@@ -13,7 +13,9 @@ from api.heart_beat import HeartBeat
 from api.execute import Execute
 from api.read import Read
 from app.run_app_base import RunAppBase
-# from api.upsert import Upsert
+from api.upsert_by_record import UpsertByRecord
+from api.extract_to_csv import ExtractToCsv
+from api.load_from_csv import LoadFromCsv
 from flasgger import Swagger
 
 
@@ -24,7 +26,8 @@ class RunServer(RunAppBase):
     def run_server(self):
         if super().start_app():
             LISTEN = f"127.0.0.1:{5800}"
-            serve(TransLogger(application=App.create_app_instance([HeartBeat, Read, Execute]),
+            serve(TransLogger(application=App.create_app_instance([HeartBeat, Read, Execute, UpsertByRecord,
+                                                                   ExtractToCsv, LoadFromCsv]),
                               logger=AppLogger.logger,
                               setup_console_handler=True)
                   , listen=LISTEN)
