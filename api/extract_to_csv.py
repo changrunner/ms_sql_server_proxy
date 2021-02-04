@@ -21,17 +21,14 @@ class ExtractToCsv(Resource):
             AppLogger.logger.debug(f"csv_file_name: {args['csv_file_name']}")
 
             ms_sqlserver = MsSqlServer(args['connection_string'])
-            csv_file = ms_sqlserver.extract_to_csv(
+            ms_sqlserver.extract_to_csv(
                 sql_statement=args['sql_statement'],
                 csv_root_directory=args['csv_root_directory'],
                 csv_file_name=args['csv_file_name'],
             )
 
             AppLogger.logger.debug(f"Command Executed")
-            # if csv_file:
             return None, 201
-            # else:
-            #     return None, 500
         except Exception as error:
             AppLogger.logger.error(f"Calling Api Execute Method Error: {error}")
             return None, 500
