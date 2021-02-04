@@ -1,5 +1,5 @@
 {
   "APPLICATION_NAME": "ms_sql_server_proxy",
-  "DEBUG_MODE": "True",
+  "DEBUG_MODE": "False",
   "ENVIRONMENT": "local"
 }
