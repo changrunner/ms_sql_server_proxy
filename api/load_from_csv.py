@@ -32,7 +32,8 @@ class LoadFromCsv(Resource):
                     database_name=args['database_name'],
                     schema_name=args['schema_name'],
                     table_name=args['table_name']
-                )
+                ),
+                mark_as_processed=True
             )
 
             AppLogger.logger.debug(f"Command Executed")
