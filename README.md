@@ -11,6 +11,10 @@ This api serves the purpose as an api first implementation of the Data Access La
 - Upsert (Insert or Update)
 - Execute
 
+## Common Issues:
+### Getting Error [===> Error Occurred. Error: [WinError 2] The system cannot find the file specified]
+
+Install the BCP and SqlCmd software. https://go.microsoft.com/fwlink/?linkid=2142258
 
 ## reference material
 - Swagger: https://github.com/flasgger/flasgger
