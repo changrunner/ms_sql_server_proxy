@@ -25,7 +25,8 @@ class LoadFromCsv(Resource):
             AppLogger.logger.debug(f"table_name: {args['table_name']}")
             AppLogger.logger.debug(f"csv_root_directory: {args['csv_root_directory']}")
 
-            CsvFiles(args['csv_root_directory']).to_sql_server_with_chunking(
+            # TODO: coming from unix the csv_root_directory could have the wrong slash for windows.
+            CsvFiles(str(args['csv_root_directory']).replace('/', '\\')).to_sql_server_with_chunking(
                 sql_configuration=SqlConfiguration(
                     server_type="microsoft",
                     server_name=args['server_name'],

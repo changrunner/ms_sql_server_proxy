@@ -20,10 +20,12 @@ class ExtractToCsv(Resource):
             AppLogger.logger.debug(f"csv_root_directory: {args['csv_root_directory']}")
             AppLogger.logger.debug(f"csv_file_name: {args['csv_file_name']}")
 
+
+            # TODO: coming from unix the csv_root_directory could have the wrong slash for windows.
             ms_sqlserver = MsSqlServer(args['connection_string'])
             ms_sqlserver.extract_to_csv(
                 sql_statement=args['sql_statement'],
-                csv_root_directory=args['csv_root_directory'],
+                csv_root_directory=str(args['csv_root_directory']).replace('/', '\\'),
                 csv_file_name=args['csv_file_name'],
             )
 
