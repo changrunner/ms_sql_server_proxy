@@ -18,6 +18,7 @@ pyinstaller = ">=4.1"
 [packages]
 flask-restful = ">=0.3.8"
 flasgger = ">=0.9.5"
+gitpython = "==3.1.9"
 paste = ">=3.5.0"
 python-jwt = ">=3.3.0"
 pywin32 = ">=300"
@@ -26,6 +27,7 @@ waitress = ">=1.4.4"
 zeppos-application = ">=0.0.5"
 zeppos-core = ">=1.0.6"
 zeppos-microsoft-sql-server = ">=0.0.21"
+zeppos-root = "*"
 
 [requires]
 python_version = "3.8"

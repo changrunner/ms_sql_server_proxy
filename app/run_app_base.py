@@ -7,9 +7,11 @@ import sys
 import traceback
 import os
 import psutil
+import git
 from zeppos_logging.app_logger import AppLogger
 from zeppos_application.app_config import AppConfig
 from zeppos_logging.app_logger_json_conifg_name import AppLoggerJsonConfigName
+from zeppos_root.root import Root
 
 
 class RunAppBase:
@@ -27,8 +29,12 @@ class RunAppBase:
 
     @staticmethod
     def get_config_dict():
-        AppLogger.logger.debug("Get config dictionary.")
-        return AppConfig.get_json_config_dict(__file__)
+        branch = RunAppBase._get_current_branch()
+        AppLogger.logger.debug(f"Get config dictionary: config.{branch}.json")
+        return AppConfig.get_json_config_dict(
+            current_module_filename=__file__,
+            config_file_name=f"config.{branch}.json"
+        )
 
     def start_app(self):
         AppLogger.logger.debug('Entering start_app')
@@ -102,3 +108,12 @@ class RunAppBase:
         )
         if config_dict["DEBUG_MODE"].upper() == "TRUE":
             AppLogger.set_debug_level()
+
+    @staticmethod
+    def _get_current_branch():
+        g = git.cmd.Git(Root.find_root_of_project(__file__))
+        for line in g.branch().split('\n'):
+            if line.startswith("*"):
+                AppLogger.logger.info(f"Current Git Branch: {line[1:].strip()}")
+                return line[1:].strip()
+        return None
