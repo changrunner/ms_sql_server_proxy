@@ -13,6 +13,7 @@ class LoadFromCsv(Resource):
     parser.add_argument('schema_name')
     parser.add_argument('table_name')
     parser.add_argument('csv_root_directory')
+    parser.add_argument('sep')
 
     # @login_required
     def post(self):
@@ -24,6 +25,10 @@ class LoadFromCsv(Resource):
             AppLogger.logger.debug(f"schema_name: {args['schema_name']}")
             AppLogger.logger.debug(f"table_name: {args['table_name']}")
             AppLogger.logger.debug(f"csv_root_directory: {args['csv_root_directory']}")
+            AppLogger.logger.debug(f"sep: {args['sep']}")
+
+            clean_sep = args['sep'] if args['sep'] else "|"
+            AppLogger.logger.debug(f"clean_sep: {clean_sep}")
 
             # TODO: coming from unix the csv_root_directory could have the wrong slash for windows.
             CsvFiles(str(args['csv_root_directory']).replace('/', '\\')).to_sql_server_with_chunking(
@@ -34,7 +39,8 @@ class LoadFromCsv(Resource):
                     schema_name=args['schema_name'],
                     table_name=args['table_name']
                 ),
-                mark_as_processed=True
+                mark_as_processed=True,
+                sep=clean_sep
             )
 
             AppLogger.logger.debug(f"Command Executed")
