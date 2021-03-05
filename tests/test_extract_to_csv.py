@@ -22,6 +22,20 @@ class TestTheProjectMethods(unittest.TestCase):
                           follow_redirects=True))
         self.assertEqual(201, response.status_code)
 
+    def test_get_special_unicode_characters_methods(self):
+        response = ApiReponse(
+            self.app.post('/extract_to_csv/',
+                          # headers={
+                          #     'Authorization': 'Bearer ' + JWT.create_access_token(user_name="123", password="456")},
+                          data={
+                              "connection_string": "DRIVER={ODBC Driver 17 for SQL Server}; SERVER=localhost\sqlexpress; DATABASE=master; Trusted_Connection=yes;",
+                              "sql_statement": "select * from dbo.special",
+                              "csv_root_directory": r"c:\temp\ms_sql_server_proxy",
+                              "csv_file_name": "special.csv"
+                          },
+                          follow_redirects=True))
+        self.assertEqual(201, response.status_code)
+
 
 if __name__ == '__main__':
     unittest.main()
