@@ -4,6 +4,9 @@ Sql server proxy server for when you need it.
 ## purpose
 This api serves the purpose as an api first implementation of the Data Access Layer
 
+## requirements
+* [Microsoft Sql Server ODBC driver](https://www.microsoft.com/en-us/download/details.aspx?id=56567)
+
 ## methods
 - Swagger (http://127.0.0.1:5800/apidocs/)
 - Heartbeat '/'  (http://127.0.0.1:5800/heartbeat/)
