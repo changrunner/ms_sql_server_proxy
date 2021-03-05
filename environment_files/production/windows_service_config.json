@@ -1,6 +1,0 @@
-{
-  "SERVICE_NAME": "ms_sql_server_proxy_service",
-  "APPLICATION_NAME": "ms_sql_server_proxy",
-  "APP_TO_START_CMD": "ms_sql_server_proxy_start_me.bat",
-  "DEBUG_MODE": "False"
-}
