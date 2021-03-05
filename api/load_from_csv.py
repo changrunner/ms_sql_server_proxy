@@ -30,7 +30,6 @@ class LoadFromCsv(Resource):
             clean_sep = args['sep'] if args['sep'] else "|"
             AppLogger.logger.debug(f"clean_sep: {clean_sep}")
 
-            # TODO: coming from unix the csv_root_directory could have the wrong slash for windows.
             CsvFiles(str(args['csv_root_directory']).replace('/', '\\')).to_sql_server_with_chunking(
                 sql_configuration=SqlConfiguration(
                     server_type="microsoft",
