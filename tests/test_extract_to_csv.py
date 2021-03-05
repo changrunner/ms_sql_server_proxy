@@ -14,10 +14,10 @@ class TestTheProjectMethods(unittest.TestCase):
                           # headers={
                           #     'Authorization': 'Bearer ' + JWT.create_access_token(user_name="123", password="456")},
                           data={
-                              "connection_string": "DRIVER={ODBC Driver 13 for SQL Server}; SERVER=localhost\sqlexpress; DATABASE=master; Trusted_Connection=yes;",
+                              "connection_string": "DRIVER={ODBC Driver 17 for SQL Server}; SERVER=localhost\sqlexpress; DATABASE=master; Trusted_Connection=yes;",
                               "sql_statement": "select * from information_schema.columns",
                               "csv_root_directory": r"c:\temp\ms_sql_server_proxy",
-                              "csv_file_name": "test_file"
+                              "csv_file_name": "test_file.csv"
                           },
                           follow_redirects=True))
         self.assertEqual(201, response.status_code)
