@@ -23,8 +23,8 @@ python-jwt = ">=3.3.0"
 pywin32 = ">=300"
 psutil = ">=5.8.0"
 waitress = ">=1.4.4"
-zeppos-application = ">=0.0.8"
-zeppos-microsoft-sql-server = ">=0.0.22"
+zeppos-application = ">=0.0.9"
+zeppos-microsoft-sql-server = ">=0.0.23"
 
 [requires]
 python_version = "3.8"
